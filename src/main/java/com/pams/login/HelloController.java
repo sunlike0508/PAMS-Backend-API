@@ -12,4 +12,10 @@ public class HelloController {
     public String helloworldString() {
         return "helloworld";
     }
+	
+	@GetMapping(value = "/join/user")
+    @ResponseBody
+    public String joinUser() {
+        return "Thank You";
+    }
 }
