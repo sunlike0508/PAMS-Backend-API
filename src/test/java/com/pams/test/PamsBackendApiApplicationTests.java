@@ -1,4 +1,4 @@
-package com.pams.login;
+package com.pams.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
