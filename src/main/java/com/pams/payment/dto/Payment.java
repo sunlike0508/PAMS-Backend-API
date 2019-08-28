@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -21,20 +21,20 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@NoArgsConstructor
 @Table(name="TBL_PAYMENT")
+@EqualsAndHashCode(of="payId")
 public class Payment {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pay_id")
-	private int pay_id;
+	private int payId;
 	
-//	@CreationTimestamp
-//	private Timestamp write_date;
+	@CreationTimestamp
+	private Timestamp write_date;
 	
 	@Column(name="payment_code", length = 5)
-	private String payment_code;
+	private String paymentCode;
 	
 	@Column(name="price", length = 2)
 	private int price;
@@ -46,14 +46,14 @@ public class Payment {
 	private String contents;
 	
 	@Column(name="is_active", length = 1)
-	private String is_active;
+	private String isActive;
 	
-//	@CreationTimestamp
-//	private Timestamp create_date;
-//	
-//	@UpdateTimestamp
-//	private Timestamp update_date;
-//	
-//	@Column(name="creater_id", length = 50)
-//	private String creater_id;
+	@CreationTimestamp
+	private Timestamp create_date;
+	
+	@UpdateTimestamp
+	private Timestamp update_date;
+	
+	@Column(name="creater_id", length = 50)
+	private String createrId;
 }

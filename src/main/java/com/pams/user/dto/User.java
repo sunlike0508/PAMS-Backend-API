@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="TBL_USER")
+@EqualsAndHashCode(of="user_id")
 public class User {
 	
 	@Id 
