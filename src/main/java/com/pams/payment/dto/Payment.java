@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -19,7 +20,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"start_date", "end_date"})
 @Entity
 @Table(name="TBL_PAYMENT")
 @EqualsAndHashCode(of="payId")
@@ -31,7 +32,8 @@ public class Payment {
 	private int payId;
 	
 	@CreationTimestamp
-	private Timestamp write_date;
+	@Column(name="write_date", length = 5)
+	private Timestamp writeDate;
 	
 	@Column(name="payment_code", length = 5)
 	private String paymentCode;
@@ -56,4 +58,10 @@ public class Payment {
 	
 	@Column(name="creater_id", length = 50)
 	private String createrId;
+	
+	@Transient
+	private Timestamp start_date;
+	
+	@Transient
+	private Timestamp end_date;
 }

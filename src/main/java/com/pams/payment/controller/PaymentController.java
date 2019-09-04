@@ -27,7 +27,7 @@ public class PaymentController {
         return response;
     }
 	
-	@RequestMapping(value = "/getPaymentList", method = RequestMethod.POST)
+	@RequestMapping(value = "/getPaymentList", method = RequestMethod.GET)
 	public @ResponseBody CommonResponseVO getPaymentList(@RequestBody Payment payment) {
 				
 		CommonResponseVO response = paymentService.getPaymentList(payment);

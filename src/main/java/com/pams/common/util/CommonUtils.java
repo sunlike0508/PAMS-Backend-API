@@ -1,5 +1,6 @@
 package com.pams.common.util;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -14,6 +15,14 @@ public final class CommonUtils {
     private CommonUtils() {
         throw new AssertionError();
     }
+    
+	public static boolean isNull(String data) {
+		return data == null ? true : false;
+	}
+	
+	public static boolean isNull(Timestamp date) {
+		return date == null ? true : false;
+	}
         
     /**
      * 오브젝트 NULL 검사
