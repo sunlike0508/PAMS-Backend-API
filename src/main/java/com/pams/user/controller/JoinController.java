@@ -3,35 +3,32 @@ package com.pams.user.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.pams.user.User;
-import com.pams.user.dao.JoinUserDao;
+import com.pams.common.protocol.CommonResponseVO;
+import com.pams.common.protocol.CommonResultCode;
+import com.pams.user.dto.User;
+import com.pams.user.repo.JoinUserRepository;
 
-@Controller
+@RestController
 public class JoinController {
 	
 	@Autowired
-	private JoinUserDao joinDao;
+	private JoinUserRepository joinDao;
 	
-	@GetMapping(path = "/join")
-    @ResponseBody
-    public User joinUser(User user) {
-		User user2 = new User();
-		user2.setUser_id("sunlike0508");
-		user2.setEmail("thesin1989@gmail.com");
-		user2.setGrade("08");
-		user2.setName("신선호");
+	@PostMapping(path = "/join")
+    public CommonResponseVO joinUser(User user) {
+		User joinUser = joinDao.save(user);
 		
-		joinDao.save(user2);
-		
-        return user2;
+		CommonResponseVO response = new CommonResponseVO();
+		response.setResponseCode(CommonResultCode.SUCCESS_NORMAL.getCode());
+		response.setResponseMessage(CommonResultCode.SUCCESS_NORMAL.getMessage());
+		response.setResponseData(joinUser);
+        return response;
     }
 	
-	@GetMapping(path = "/list")
-    @ResponseBody
+	@PostMapping(path = "/list")
 	public List<User> userList(){
 		return (List<User>) joinDao.findAll();
 	}
