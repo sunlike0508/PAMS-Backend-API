@@ -34,4 +34,12 @@ public class PaymentController {
 		
         return response;
     }
+	
+	@RequestMapping(value = "/updatePayment", method = RequestMethod.PUT)
+	public @ResponseBody CommonResponseVO updatePayment(@RequestBody Payment payment) {
+				
+		CommonResponseVO response = paymentService.updatePayment(payment);
+		
+        return response;
+    }
 }

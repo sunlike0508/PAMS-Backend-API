@@ -30,7 +30,7 @@ public class PaymentPredicate {
 		}
 		
 		if(startDate !=null) {
-			builder.and(paymentGroup.writeDate.between(startDate, endDate));
+			builder.and(paymentGroup.dateTime.between(startDate, endDate));
 		}
 		
 		return builder;

@@ -23,17 +23,17 @@ import lombok.ToString;
 @ToString(exclude = {"start_date", "end_date"})
 @Entity
 @Table(name="TBL_PAYMENT")
-@EqualsAndHashCode(of="payId")
+@EqualsAndHashCode(of="id")
 public class Payment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="pay_id")
-	private int payId;
+	@Column(name="id")
+	private int id;
 	
 	@CreationTimestamp
-	@Column(name="write_date", length = 5)
-	private Timestamp writeDate;
+	@Column(name="datetime", length = 5)
+	private Timestamp dateTime;
 	
 	@Column(name="payment_code", length = 5)
 	private String paymentCode;
@@ -41,8 +41,8 @@ public class Payment {
 	@Column(name="price", length = 2)
 	private int price;
 	
-	@Column(name="category", length = 5)
-	private String category;
+	@Column(name="category_code", length = 5)
+	private String categoryCode;
 	
 	@Column(name="contents")
 	private String contents;

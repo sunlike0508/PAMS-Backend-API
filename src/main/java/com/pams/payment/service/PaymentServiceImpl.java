@@ -55,4 +55,20 @@ public class PaymentServiceImpl implements PaymentService{
 		
 		return response;
 	}
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+	public CommonResponseVO updatePayment(Payment payment) {
+		log.info(payment.toString());
+		//need validation check login
+		
+		Payment savePayment = paymentRepo.save(payment);
+		
+		CommonResponseVO response = new CommonResponseVO();
+		response.setResponseCode(CommonResultCode.SUCCESS_NORMAL.getCode());
+		response.setResponseMessage(CommonResultCode.SUCCESS_NORMAL.getMessage());
+		response.setResponseData(savePayment);
+
+		return response;
+	}
 }

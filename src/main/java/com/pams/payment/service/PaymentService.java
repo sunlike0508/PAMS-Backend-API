@@ -8,4 +8,6 @@ public interface PaymentService{
 	public CommonResponseVO savePayment(Payment payment);
 
 	public CommonResponseVO getPaymentList(Payment payment);
+
+	public CommonResponseVO updatePayment(Payment payment);
 }
