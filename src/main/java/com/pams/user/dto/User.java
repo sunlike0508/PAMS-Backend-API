@@ -51,8 +51,4 @@ public class User {
 	
 	@UpdateTimestamp
 	private Timestamp update_date;
-	
-	@Column(name="creater_id", length = 50)
-	private String creater_id;	
-	
 }

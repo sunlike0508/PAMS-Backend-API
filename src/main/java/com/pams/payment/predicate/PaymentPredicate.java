@@ -2,6 +2,7 @@ package com.pams.payment.predicate;
 
 import java.sql.Timestamp;
 
+import com.pams.common.util.CommonUtils;
 import com.pams.payment.dto.Payment;
 import com.pams.payment.dto.QPayment;
 import com.querydsl.core.BooleanBuilder;
@@ -12,7 +13,7 @@ import lombok.extern.java.Log;
 @Log
 public class PaymentPredicate {
 	
-	public static Predicate search(Payment payment) {
+	public static Predicate searchCondition(Payment payment) {
 		log.info("payment_code: " + payment.getPaymentCode());
 		log.info("start_date: " + payment.getStart_date());
 		log.info("end_date: " + payment.getEnd_date());
@@ -25,13 +26,15 @@ public class PaymentPredicate {
 		
 		BooleanBuilder builder = new BooleanBuilder();
 		
-		if(paymentCode !=null) {
+		if(!CommonUtils.isNull(paymentCode)) {
 			builder.and(paymentGroup.paymentCode.eq(paymentCode));
 		}
 		
-		if(startDate !=null) {
-			builder.and(paymentGroup.dateTime.between(startDate, endDate));
+		if(!CommonUtils.isNull(startDate)) {
+			builder.and(paymentGroup.payDate.between(startDate, endDate));
 		}
+		
+		builder.and(paymentGroup.isActive.eq("1"));
 		
 		return builder;
 	}
