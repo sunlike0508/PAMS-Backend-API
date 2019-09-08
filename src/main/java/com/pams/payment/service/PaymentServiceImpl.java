@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentService{
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, isolation = Isolation.DEFAULT)
-	public CommonResponseVO savePayment(Payment payment) {
+	public CommonResponseVO makePayment(Payment payment) {
 		
 		log.info(payment.toString());
 		//need validation check payment
@@ -103,5 +103,19 @@ public class PaymentServiceImpl implements PaymentService{
 		if(!CommonUtils.isNull(payment.getIsActive())) {
 			updatePayment.setIsActive(payment.getIsActive());
 		}
+	}
+
+	@Override
+	public CommonResponseVO deletePayment(Payment payment) {
+	
+		//paymentRepo.delete(payment);
+		paymentRepo.deleteById(payment.getId());
+		
+		CommonResponseVO response = new CommonResponseVO();
+		response.setResponseCode(CommonResultCode.SUCCESS_NORMAL.getCode());
+		response.setResponseMessage(CommonResultCode.SUCCESS_NORMAL.getMessage());
+		//response.setResponseData(updatePayment);
+		
+		return null;
 	}
 }

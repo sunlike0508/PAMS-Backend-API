@@ -9,4 +9,6 @@ public interface PaymentRepository extends CrudRepository<Payment, Long>, Queryd
 
 	Payment findById(int id);
 
+	void deleteById(int id);
+
 }

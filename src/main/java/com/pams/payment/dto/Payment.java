@@ -33,7 +33,7 @@ public class Payment {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="pay_date", length = 5)
+	@Column(name="pay_date")
 	private Timestamp payDate;
 	
 	@Column(name="payment_code", length = 5)
