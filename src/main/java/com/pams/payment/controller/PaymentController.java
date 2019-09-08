@@ -18,11 +18,11 @@ public class PaymentController {
 	
 	@Autowired
 	private PaymentService paymentService;
-	
+		
 	@RequestMapping(value = "/makePayment", method = RequestMethod.POST)
 	public @ResponseBody CommonResponseVO makePayment(@RequestBody Payment payment) {
 				
-		CommonResponseVO response = paymentService.savePayment(payment);
+		CommonResponseVO response = paymentService.makePayment(payment);
 		
         return response;
     }
@@ -31,6 +31,23 @@ public class PaymentController {
 	public @ResponseBody CommonResponseVO getPaymentList(@RequestBody Payment payment) {
 				
 		CommonResponseVO response = paymentService.getPaymentList(payment);
+		
+        return response;
+    }
+	
+	@RequestMapping(value = "/updatePayment", method = RequestMethod.PUT)
+	public @ResponseBody CommonResponseVO updatePayment(@RequestBody Payment payment) {
+				
+		CommonResponseVO response = paymentService.updatePayment(payment);
+		
+        return response;
+    }
+	
+	
+	@RequestMapping(value = "/deletePayment", method = RequestMethod.DELETE)
+	public @ResponseBody CommonResponseVO deletePayment(@RequestBody Payment payment) {
+				
+		CommonResponseVO response = paymentService.deletePayment(payment);
 		
         return response;
     }

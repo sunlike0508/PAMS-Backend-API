@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.EqualsAndHashCode;
@@ -23,22 +24,22 @@ import lombok.ToString;
 @ToString(exclude = {"start_date", "end_date"})
 @Entity
 @Table(name="TBL_PAYMENT")
-@EqualsAndHashCode(of="payId")
+@EqualsAndHashCode(of="id")
+@DynamicUpdate
 public class Payment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="pay_id")
-	private int payId;
+	@Column(name="id")
+	private int id;
 	
-	@CreationTimestamp
-	@Column(name="write_date", length = 5)
-	private Timestamp writeDate;
+	@Column(name="pay_date")
+	private Timestamp payDate;
 	
 	@Column(name="payment_code", length = 5)
 	private String paymentCode;
 	
-	@Column(name="price", length = 2)
+	@Column(name="price")
 	private int price;
 	
 	@Column(name="category", length = 5)
@@ -51,13 +52,11 @@ public class Payment {
 	private String isActive;
 	
 	@CreationTimestamp
+	@Column(updatable=false)
 	private Timestamp create_date;
 	
 	@UpdateTimestamp
 	private Timestamp update_date;
-	
-	@Column(name="creater_id", length = 50)
-	private String createrId;
 	
 	@Transient
 	private Timestamp start_date;
