@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,9 +26,10 @@ import lombok.ToString;
 @EqualsAndHashCode(of="id")
 public class User {
 	
-	@Id 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", length = 50, nullable = false)
-	private String id;
+	private Long id;
 	
 	@Column(name="email", length = 50, nullable = false)
 	private String email;

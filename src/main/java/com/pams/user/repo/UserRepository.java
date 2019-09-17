@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.pams.user.dto.User;
 
 @Repository
-public interface JoinUserRepository extends CrudRepository<User, Long>{
+public interface UserRepository extends CrudRepository<User, Long>{
 
 }

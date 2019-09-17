@@ -18,7 +18,8 @@ public class PaymentController {
 	
 	@Autowired
 	private PaymentService paymentService;
-		
+	
+	
 	@RequestMapping(value = "/makePayment", method = RequestMethod.POST)
 	public @ResponseBody CommonResponseVO makePayment(@RequestBody Payment payment) {
 				
