@@ -22,17 +22,11 @@ public class UserController {
 	private UserService userService;
 	
 	//Create
-	@RequestMapping(value = "/signUpUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
     public @ResponseBody CommonResponseVO signUpUser(@RequestBody User user) {
 		
 		CommonResponseVO response = userService.signUpUser(user);
 	
         return response;
     }
-	
-	//Read
-	
-	//Update
-	
-	//Delete
 }
