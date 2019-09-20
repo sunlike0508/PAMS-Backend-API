@@ -21,7 +21,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	//Create
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
     public @ResponseBody CommonResponseVO signUpUser(@RequestBody User user) {
 		
@@ -29,4 +28,12 @@ public class UserController {
 	
         return response;
     }
+	
+	@RequestMapping(value ="/getUserList", method = RequestMethod.GET)
+	public @ResponseBody CommonResponseVO getUserList(@RequestBody User user) {
+		
+		CommonResponseVO response = userService.getUserList(user);
+		
+		return response;
+	}
 }
