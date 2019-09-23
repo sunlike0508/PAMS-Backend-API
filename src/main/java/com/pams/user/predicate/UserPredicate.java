@@ -14,7 +14,7 @@ public class UserPredicate {
 		String userName = user.getName();
 		String userGrade = user.getGrade();
 		String userClubCode = user.getClubCode();
-		String userRoleCode = user.getGrade();
+		String userRoleCode = user.getRoleCode();
 		
 		BooleanBuilder builder = new BooleanBuilder();
 		
