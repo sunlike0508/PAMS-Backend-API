@@ -38,13 +38,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public CommonResponseVO getUserList(User user) {
-		
-		log.info("<------Request------>");
-		log.info("user_name : " + user.getName());
-		log.info("user_grade : " + user.getGrade());
-		log.info("user_club_code : " + user.getClubCode());
-		log.info("user_role_code : " + user.getRoleCode());
-		log.info("<-------------------->");
 		List<User> userList = (List<User>) userRepo.findAll(UserPredicate.searchCondition(user));
 		
 		CommonResponseVO response = new CommonResponseVO();
