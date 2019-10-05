@@ -1,6 +1,7 @@
 package com.pams.payment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,8 +30,8 @@ public class PaymentController {
     }
 	
 	@RequestMapping(value = "/getPaymentList", method = RequestMethod.GET)
-	public @ResponseBody CommonResponseVO getPaymentList(@RequestBody Payment payment) {
-				
+	public @ResponseBody CommonResponseVO getPaymentList(@ModelAttribute Payment payment) {
+			
 		CommonResponseVO response = paymentService.getPaymentList(payment);
 		
         return response;
