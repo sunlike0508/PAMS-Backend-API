@@ -1,5 +1,6 @@
 package com.pams.test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -50,6 +51,15 @@ public class PamsPaymentJPATests {
     	Payment payment = new Payment();
     	List<Payment> paymentList = (List<Payment>) paymentRepo.findAll(PaymentPredicate.searchCondition(payment));
     	assertThat(paymentList, is(notNullValue()));
+//    	assertThat(paymentList).isNotEmpty(); // 위와 같은 내용 위에 jar import차이
+    	
+//    	Payment cateCodePayment = new Payment();
+//    	cateCodePayment.setCategory("PCC01");
+//    	
+//    	Payment payCodePayment = new Payment();
+//    	payCodePayment.setCategory("PMC01");
+    	
+//    	assertThat(paymentList).isNotEmpty().contains(cateCodePayment).doesNotContain(payCodePayment); // 조회된 리스트에 원하는 DTO가 있는지 없는지 check하는 테스트 유닛
     }
 
     @Test
